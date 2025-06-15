@@ -3,24 +3,32 @@ package com.dantedevfr.books_service.service.impl;
 import com.dantedevfr.books_service.model.Book;
 import com.dantedevfr.books_service.repository.BookRepository;
 import com.dantedevfr.books_service.service.BookService;
+import com.dantedevfr.books_service.service.validation.BookValidator;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
+    private final BookValidator bookValidator;
 
-    public BookServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(BookRepository bookRepository, BookValidator bookValidator) {
         this.bookRepository = bookRepository;
+        this.bookValidator = bookValidator;
     }
 
     @Override
     public List<Book> getAllValidBooks() {
-        return List.of();
+        return bookRepository.findAll()
+                .stream()
+                .filter(bookValidator::isValid)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Book> getBookById(Long id) {
-        return Optional.empty();
+        return bookRepository.findById(id)
+                .filter(bookValidator::isValid);
     }
 }
