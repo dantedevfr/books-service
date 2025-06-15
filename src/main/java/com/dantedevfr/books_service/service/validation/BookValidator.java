@@ -1,10 +1,8 @@
 package com.dantedevfr.books_service.service.validation;
-
 import com.dantedevfr.books_service.model.Book;
 import com.dantedevfr.books_service.model.Section;
 import com.dantedevfr.books_service.model.SectionType;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 

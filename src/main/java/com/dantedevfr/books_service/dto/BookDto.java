@@ -1,30 +1,24 @@
-package com.dantedevfr.books_service.model;
-import jakarta.persistence.*;
-import java.util.ArrayList;
+package com.dantedevfr.books_service.dto;
 import java.util.List;
 
-@Entity
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class BookDto {
     private Long id;
-
     private String title;
     private String author;
     private String description;
+    private List<SectionDto> sections;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Section> sections = new ArrayList<>();
+    public BookDto() {
+    }
 
-    public Book() {}
-
-    public Book(String title, String author, String description) {
+    public BookDto(Long id, String title, String author, String description, List<SectionDto> sections) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.description = description;
+        this.sections = sections;
     }
 
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -57,11 +51,11 @@ public class Book {
         this.description = description;
     }
 
-    public List<Section> getSections() {
+    public List<SectionDto> getSections() {
         return sections;
     }
 
-    public void setSections(List<Section> sections) {
+    public void setSections(List<SectionDto> sections) {
         this.sections = sections;
     }
 

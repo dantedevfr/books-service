@@ -1,12 +1,8 @@
 package com.dantedevfr.books_service.service;
-
-import com.dantedevfr.books_service.model.Book;
-
+import com.dantedevfr.books_service.dto.BookDto;
 import java.util.List;
-import java.util.Optional;
 
 public interface BookService {
-    List<Book> getAllValidBooks();
-    Optional<Book> getBookById(Long id);
-
+    List<BookDto> getAllValidBooks();
+    BookDto getBookById(Long id);
 }

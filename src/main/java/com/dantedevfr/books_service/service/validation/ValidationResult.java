@@ -1,5 +1,4 @@
 package com.dantedevfr.books_service.service.validation;
-
 import java.util.List;
 
 public class ValidationResult {

@@ -1,11 +1,10 @@
 package com.dantedevfr.books_service.model;
-
 import jakarta.persistence.*;
 
 @Entity
 public class Section {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String content;
